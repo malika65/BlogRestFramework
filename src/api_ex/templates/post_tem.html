@@ -1,0 +1,62 @@
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <style>
+            .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+            
+            }
+            .navbar a{
+            margin-bottom: 20px;
+            margin-right:1550px;
+            border-radius: 0;
+            font-size: 40px;
+            
+            }
+            .container{
+                font-size: 15px;   
+                margin-top: 10px;
+
+            }
+            .footer {
+                font-size: 40px;
+                width: 100%;
+                background-color: rgb(15, 14, 14);
+                color: white;
+                text-align: center;
+        }
+
+            </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Blod Api Example</a>
+            </div>
+            </div>
+        </nav>
+
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+
+         <div class="footer">
+        <p>Footer</p>
+      </div> 
+    </body>
+</html>

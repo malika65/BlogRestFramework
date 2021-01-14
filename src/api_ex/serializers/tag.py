@@ -25,4 +25,8 @@ class TagCreateSerializer(serializers.ModelSerializer):
         model = Tag
         exclude = ('id','post')
 
-
+class TagDestroySerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Tag
+        fields = "__all__"

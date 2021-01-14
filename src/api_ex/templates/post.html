@@ -1,0 +1,20 @@
+{% extends 'post_tem.html' %}
+
+{% block content %}
+
+{% for post in posts %}
+<div class="container">
+  <div class="card text-white bg-primary mb-3" style="max-width: 45rem;">
+    <div class="card-header">{{post.title}}</div>
+
+    <div class="card-body">
+      {% for tag in post.tags.all %}
+      <h5 class="card-title"><a href="#" style="color:red">{{tag.name}}</a></h5>
+      {% endfor %}
+    </div>
+  </div>
+  <a href="{% url 'post_details' post.id %} " class="btn btn-primary">Details</a>
+</div>
+{% endfor %}
+{% endblock %}      
+

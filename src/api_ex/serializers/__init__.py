@@ -1,10 +1,13 @@
 from .posts import (
     PostListSerializer,
     PostDetailSerializer,
-    PostCreateSerializer
+    PostCreateSerializer,
+    PostDestroySerializer
+
     )
 from .tag import (
     TagListSerializer,
     TagDetailSerializer,
-    TagCreateSerializer
+    TagCreateSerializer,
+    TagDestroySerializer,
 )

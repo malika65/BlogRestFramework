@@ -26,3 +26,27 @@ class PostCreateSerializer(serializers.ModelSerializer):
         model = Post
         exclude = ('id',)
     
+class PostDestroySerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Post
+        fields = "__all__"
+
+
+class PostUpdateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Post
+        fields = "__all__"
+
+
+    def update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        instance.name = request.data.get("name")
+        instance.save()
+
+        serializer = self.get_serializer(instance)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+
+        return Response(serializer.data)

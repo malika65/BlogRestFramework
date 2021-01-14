@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<style>
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    
+    }
+    .navbar a{
+      margin-bottom: 20px;
+      margin-right:1550px;
+      border-radius: 0;
+      font-size: 40px;
+    
+    }
+    .container{
+        font-size: 15px;   
+        margin-top: 10px;
+
+    }
+    .footer {
+        font-size: 40px;
+        width: 100%;
+        background-color: rgb(15, 14, 14);
+        color: white;
+        text-align: center;
+}
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Blod Tags</a>
+          </div>
+        </div>
+      </nav>
+
+      {% for tag in tags %}
+      <div class="container">
+      <div class="card text-white bg-primary mb-3" style="max-width: 45rem;">
+        <div class="card-header">{{tag.name}}</div>
+        
+      </div>
+      </div>
+      {% endfor %}
+
+      <div class="footer">
+        <p>Footer</p>
+      </div> 
+</body>
+</html>
+
