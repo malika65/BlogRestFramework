@@ -53,28 +53,27 @@ def login(request):
 def reset_password(request):
     form = PasswordResetForm()
     if request.method == 'POST':
-        b = Author.objects.get(email=request.POST['email'])
-        a = Author.objects.values_list('email', flat=True)
-        for i in a:
-            if b.email==i:
-                send_verified_link(f'Чтобы сбросить пароль перейите по ссылке:http://127.0.0.1:8000/auth/confirm/new_password/{b.email}',b.email)
-                return render(request,'reply.html',{'message':'Проверьте почту','success':True})
-      
-            else:
-                return render(request,'reply.html',{'message':'Введите почту , с которой вы регистрировались','success':False})
+        if Author.objects.filter(email=request.POST['email']):
+            a = Author.objects.get(email=request.POST['email'])
+            code = ConfirmCode.objects.create(author=a)
+            send_verified_link(f'Чтобы сбросить пароль перейите по ссылке:http://127.0.0.1:8000/auth/confirm/new_password/{code.code}',a.email)
+            return render(request,'reply.html',{'message':'Проверьте почту','success':True})
+    
+        else:
+            return render(request,'reply.html',{'message':'Введите почту , с которой вы регистрировались','success':False})
 
     return render(request,'reset_password.html',{'form':form})
 
-def new_password(request,email):
+def new_password(request,code):
     form = NewPasswordForm()
     if request.method == 'POST':
         save_form = NewPasswordForm(request.POST)
-        b = Author.objects.get(email=email)
-        print(b)
-        # b = Author.objects.filter(email)
-        b.password = save_form['password'].value()
-        b.save()
-        form_l = LoginForm()
-        return render(request,'login.html',{'form':form_l})
+        if ConfirmCode.objects.filter(code=code):
+            c = ConfirmCode.objects.get(code=code)
+            b = c.author
+            b.password = save_form['password'].value()
+            b.save()
+            form_l = LoginForm()
+            return render(request,'login.html',{'form':form_l})
 
     return render(request,'new_password.html',{'form':form})

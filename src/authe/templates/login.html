@@ -9,7 +9,7 @@
         {{ form.as_p }}
         <button type="submit" class="save btn btn-default">Зарегистрироваться</button>     
            
-        <button type="submit" class="save btn btn-default">Сбросить пароль</button>
+        <a type="submit" class="save btn btn-default" href="{% url 'authe:reset_password' %}">Сбросить пароль</a>
 
     </form>
 {% endblock %}
