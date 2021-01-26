@@ -6,7 +6,7 @@ from .views import (
     post_detail_view,
     tag_detail_view,
     post_create,
-
+    tag_create,
     PostListView,
     PostDetailView,
     TagListView,
@@ -19,13 +19,16 @@ from .views import (
     # deleteTag
 )
 
+app_name = 'api_ex'
+
 urlpatterns = [
-    path('post.view/', post_view),
-    path('tag.view/', tag_view),
+    # path('home/', home, name='home'),
+    path('', post_view, name='post_list'),
+    path('tag.view/', tag_view, name='tag_list'),
     path('post.view/<int:post_id>/', post_detail_view, name='post_details'),
-    path('tag.view/<int:tag_id>/', tag_detail_view, name = 'tag_detail'),
+    path('tag.view/<int:tag_id>/', tag_detail_view, name = 'tag_details'),
     path('post.create/',post_create, name='post_create'),
-    
+    path('tag.create/',tag_create, name='tag_create'),
     
     path('api.posts/',PostListView.as_view()),
     path('api.posts/<int:post_id>/',PostDetailView.as_view()),

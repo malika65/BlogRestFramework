@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'api_ex.apps.ApiExConfig',
+    'authe.apps.AutheConfig',
     'rest_framework',
 ]
 
@@ -86,6 +87,21 @@ DATABASES = {
     },
 }
 
+
+EMAIL_FROM = 'malika.satimbaeva@iaau.edu.kg'
+EMAIL_BCC = 'Qualle'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'malika.satimbaeva@iaau.edu.kg'
+EMAIL_HOST_PASSWORD = '18010400132'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+SERVER_EMAIL = 'malika.satimbaeva@iaau.edu.kg'
+
+AUTH_USER_MODEL = 'authe.Author'
 
 
 # Password validation

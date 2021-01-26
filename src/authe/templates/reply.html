@@ -1,0 +1,15 @@
+{% extends 'post_tem.html' %}
+
+{% block content %}
+{% if success %}
+<div class="alert alert-success" role="alert">
+    {{message}}
+    This is a success alert—check it out!
+  </div>
+{% else %}
+<div class="alert alert-warning" role="alert">
+    {{message}}
+    </div>
+ 
+{% endif %} 
+{% endblock %}

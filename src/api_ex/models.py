@@ -10,6 +10,9 @@ class Tag(models.Model):
         verbose_name = 'Теги'
         verbose_name_plural = 'Теги'
 
+    def __str__(self):
+        return self.name
+
 class Post(models.Model):
     title = models.CharField(max_length=200,verbose_name = 'Заголовок')
     body = models.TextField(max_length=1500, verbose_name = 'Тело поста')
@@ -19,6 +22,9 @@ class Post(models.Model):
     class Meta:
         verbose_name = 'Пост'
         verbose_name_plural = 'Посты'
+
+    def __str__(self):
+        return self.title
 
 ## post = Post.objects.first()
 ## post.tags.all() ## related_name = 'tags' это название к post.tags.all() ,

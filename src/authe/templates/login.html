@@ -1,0 +1,15 @@
+{% extends 'post_tem.html' %}
+
+{% block content %}
+
+{% if errors %}
+    {{errors}}
+{% endif %}
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Зарегистрироваться</button>     
+           
+        <button type="submit" class="save btn btn-default">Сбросить пароль</button>
+
+    </form>
+{% endblock %}

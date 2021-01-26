@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from django.shortcuts import redirect
 
 from rest_framework.generics import CreateAPIView,ListAPIView,RetrieveAPIView,DestroyAPIView
-from .forms import PostForm
+from .forms import PostForm, TagForm
 
 from django.conf import settings
 
@@ -23,7 +23,7 @@ from .serializers import(
     )
 
 def home(request):
-    return HttpResponse('<h1>Hello World</h1>')
+    return HttpResponse("Hello world")  
 
 class PostListView(ListAPIView):
     serializer_class = PostListSerializer
@@ -80,20 +80,39 @@ def tag_view(request):
 
 def post_detail_view(request,post_id):
     post = Post.objects.get(id = post_id)
+    if request.method == 'POST':
+        Post.objects.filter(id=post_id).delete()
+        return redirect('api_ex:post_list')
     return render(request, "post_detail.html", context = {"post":post})  
 
 def tag_detail_view(request, tag_id):
     posts = Post.objects.filter(tags__id = tag_id)
+    if request.method == 'POST':
+        Tag.objects.filter(id=tag_id).delete()
+        return redirect('api_ex:tag_list')
     return render(request, "post.html", context = {"posts":posts})  
 
 def post_create(request):
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
-            post = form.save(commit=False)
+            post = form.save()
             post.save()
-            return render(request, 'post.html')
+            return redirect('api_ex:post_list')
     else:
         form = PostForm()
     return render(request, 'post_create.html', {'form': form})
+
+def tag_create(request):
+    form = TagForm(request.POST)
+    if request.method == "POST":
+        save_form = TagForm(request.POST)
+        if save_form.is_valid():
+            tag = save_form.save()
+            tag.save()
+            return redirect('api_ex:tag_list')
+    else:
+        form = TagForm()
+    return render(request, 'tag_create.html', {'form': form})
+
 
