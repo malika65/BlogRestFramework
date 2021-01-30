@@ -66,6 +66,7 @@ class ConfirmCode(models.Model):
     code = models.CharField(max_length=6)
     confirm = models.BooleanField(default=False)
     author = models.ForeignKey(Author, related_name = 'codes' , on_delete=models.CASCADE)
+    reset = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = 'Код подтверждения'
