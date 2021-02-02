@@ -49,9 +49,15 @@ class PasswordResetForm(forms.Form):
 
 
 class NewPasswordForm(forms.Form):
-    password = forms.CharField()
+    old_password = forms.CharField()
+    new_password = forms.CharField()
 
-    password.widget.attrs.update({
+    old_password.widget.attrs.update({
+        'class':'form-control',
+        'placeholder':'Старый пароль'
+    })
+
+    new_password.widget.attrs.update({
         'class':'form-control',
         'placeholder':'Новый пароль'
     })

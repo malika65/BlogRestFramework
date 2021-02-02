@@ -7,7 +7,7 @@
 {% endif %}
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Зарегистрироваться</button>     
+        <button type="submit" class="save btn btn-default">Войти</button>     
            
         <a type="submit" class="save btn btn-default" href="{% url 'authe:reset_password' %}">Сбросить пароль</a>
 
