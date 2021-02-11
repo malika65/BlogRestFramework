@@ -3,6 +3,7 @@ from .views import (
     home,
     post_view,
     tag_view,
+    news_view,
     post_detail_view,
     tag_detail_view,
     post_create,
@@ -29,6 +30,7 @@ urlpatterns = [
     path('tag.view/<int:tag_id>/', tag_detail_view, name = 'tag_details'),
     path('post.create/',post_create, name='post_create'),
     path('tag.create/',tag_create, name='tag_create'),
+    path('news.view/', news_view, name='news_view'),
     
     path('api.posts/',PostListView.as_view()),
     path('api.posts/<int:post_id>/',PostDetailView.as_view()),

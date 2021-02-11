@@ -1,7 +1,7 @@
 import json
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
-from .models import Post, Tag
+from .models import Post, Tag,News
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.shortcuts import redirect
@@ -21,6 +21,9 @@ from .serializers import(
     TagDestroySerializer,
     PostDestroySerializer
     )
+
+from .forms import QuillFieldForm,QuillPostForm
+
 
 def home(request):
     return HttpResponse("Hello world")  
@@ -71,7 +74,12 @@ class PostDeleteView(DestroyAPIView):
 
 def post_view(request):
     posts = Post.objects.all().order_by("-id")
-    return render(request, "post.html", context = {"posts":posts})  
+    return render(request, "post.html", context = {"posts":posts}) 
+
+def news_view(request):
+    news = News.objects.all().order_by("-id")
+    return render(request, "news.html", context = {"news":news,'form': QuillPostForm()})  
+
 
 def tag_view(request):
     tags = Tag.objects.all().order_by("-id")

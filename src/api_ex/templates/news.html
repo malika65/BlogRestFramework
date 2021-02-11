@@ -1,0 +1,27 @@
+{% extends 'post_tem.html' %}
+
+{% block content %}
+
+{% for new in news %}
+<head>
+  {% include 'django_quill/media.html' %}
+</head>
+<style>
+  img {
+    max-width: 100%;
+}
+</style>
+<div class="container">
+  <div class="card text-white bg-primary mb-3" style="max-width: 45rem;">
+    <div class="card-header">{{new.body.html | safe }}</div>
+    <form action="" method="POST">{% csrf_token %}
+      {{ form.body }}
+    </form>
+
+  </div>
+</div>
+{% endfor %}
+
+
+{% endblock %}      
+

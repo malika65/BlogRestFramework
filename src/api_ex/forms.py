@@ -1,6 +1,18 @@
 from django import forms
+from .models import Post, Tag,News
+from django_quill.forms import QuillFormField
 
-from .models import Post, Tag
+class QuillFieldForm(forms.Form):
+    body = QuillFormField()
+
+
+class QuillPostForm(forms.ModelForm):
+    class Meta:
+        model = News
+        fields = (
+            'title',
+            'body',
+        )
 
 class PostForm(forms.ModelForm):
 

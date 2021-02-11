@@ -1,6 +1,7 @@
 {% load static %}
 <html>
     <head>
+      
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
@@ -53,6 +54,9 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'api_ex:tag_create' %}">Создать тег</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'api_ex:news_view' %}">Все новости</a>
                 </li>
                 
                 <li class="nav-item dropdown">

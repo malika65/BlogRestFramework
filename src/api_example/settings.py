@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 'api_ex.apps.ApiExConfig',
     # 'authe.apps.AutheConfig',
+    'django_quill',
     'api_ex',
     'authe',
     'rest_framework',
